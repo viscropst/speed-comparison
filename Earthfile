@@ -675,14 +675,14 @@ pascal:
   DO +BENCH --name="pascal" --lang="Pascal (FPC)" --version="fpc -iV" --cmd="./leibniz"
 
 pony:
-  FROM ponylang/ponyc:release-alpine
+  FROM ghcr.io/ponylang/ponyc:release
   DO +PREPARE_ALPINE
   DO +ADD_FILES --src="leibniz.pony"
   RUN --no-cache ponyc ./ -o=out --bin-name=leibniz
   DO +BENCH --name "pony" --lang="Pony" --version="ponyc --version" --cmd="./out/leibniz"
 
 pony-nightly:
-  FROM ponylang/ponyc:alpine
+  FROM ghcr.io/ponylang/ponyc:nightly
   DO +PREPARE_ALPINE
   DO +ADD_FILES --src="leibniz.pony"
   RUN --no-cache ponyc ./ -o=out --bin-name=leibniz
